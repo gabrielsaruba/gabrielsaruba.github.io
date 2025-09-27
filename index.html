@@ -8,176 +8,124 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
-    /* Reset básico */
+    /* Reset e Configurações Globais */
     * { margin:0; padding:0; box-sizing:border-box; }
-
-    /* --- TEMA ESCURO UNIFICADO (PRETO E VERMELHO) --- */
+    html { scroll-behavior: smooth; } /* Rolagem suave ao clicar nos links do menu */
     body { 
       font-family: 'Arial', sans-serif; 
-      background: #000; /* Fundo principal PRETO ABSOLUTO */
+      background: #000;
       color: #ccc; 
     }
 
-    /* Header e menu */
+    /* Header e Menu */
     header {
       position: sticky; top:0; 
-      background: #000; /* Fundo PRETO ABSOLUTO */
+      background: #000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
       z-index: 100;
       border-bottom: 1px solid #333; 
     }
     nav {
-      display: flex; justify-content: center; gap: 20px; padding: 15px;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 15px;
     }
     nav a {
       color: white; text-decoration: none; font-weight: bold; transition: 0.3s;
     }
-    nav a:hover { 
-      color: #f45b69; 
-    }
+    nav a:hover { color: #f45b69; }
 
-    /* Seções Padrão */
+    /* Seções e Títulos Padrão */
     section { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
     h1, h2, h3 { color: #fff; } 
-    h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
-    h2 .highlight { color: #f45b69; } /* Destaque para h2 com a cor vermelha */
+    h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+    h2 .highlight { color: #f45b69; }
 
-
-    /* Welcome */
+    /* Seção Welcome */
     .welcome { text-align: center; }
     .welcome h1 { font-size: 3rem; margin-bottom: 20px; }
     .welcome p { font-size: 1.3rem; color: #aaa; }
     
-    /* Seção de Habilidades */
-    #skills {
-      background-color: #000; 
-      max-width: none;
-      padding: 80px 20px;
-    }
-    .habilidades-container {
-      max-width: 1200px; margin: 0 auto; display: flex;
-      justify-content: space-around; flex-wrap: wrap; gap: 30px;
-    }
+    /* Seção Habilidades */
+    #skills { max-width: none; padding: 80px 20px; }
+    .habilidades-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
     .habilidade-card { width: 300px; padding: 20px; text-align: left; }
-    .icon-container {
-      font-size: 2.5rem; color: #f45b69; 
-      margin-bottom: 20px; border: 2px solid #444; width: 80px;
-      height: 80px; display: flex; justify-content: center;
-      align-items: center; border-radius: 8px; transition: all 0.3s ease;
-    }
-    .habilidade-card:hover .icon-container {
-      border-color: #f45b69; 
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(244, 91, 105, 0.5); 
-    }
+    .icon-container { font-size: 2.5rem; color: #f45b69; margin-bottom: 20px; border: 2px solid #444; width: 80px; height: 80px; display: flex; justify-content: center; align-items: center; border-radius: 8px; transition: all 0.3s ease; }
+    .habilidade-card:hover .icon-container { border-color: #f45b69; transform: scale(1.05); box-shadow: 0 0 15px rgba(244, 91, 105, 0.5); }
     .habilidade-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
     .habilidade-card p { font-size: 1rem; line-height: 1.6; color: #ccc; }
 
-    /* About */
+    /* Seção Sobre */
     .about { text-align: center; }
-    .about img {
-      width: 250px; height: 250px; border-radius: 50%;
-      margin: 20px 0; object-fit: cover; 
-      border: 3px solid #f45b69; 
-    }
+    .about img { width: 250px; height: 250px; border-radius: 50%; margin: 20px 0; object-fit: cover; border: 3px solid #f45b69; }
     .about p { max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
-    /* --- NOVA SEÇÃO DE PROJETOS --- */
-    #projects {
-      background-color: #000; /* Fundo preto padrão */
-      max-width: none; /* Remove limitação para o container interno controlar a largura */
-      padding-top: 80px;
-      padding-bottom: 80px;
-    }
-    #projects h2 {
-      margin-bottom: 50px;
-    }
-    .projects-grid {
-      display: flex;
-      justify-content: center; /* Centraliza os projetos */
-      flex-wrap: wrap; /* Permite quebrar linha em telas menores */
-      gap: 30px; /* Espaço entre os cards de projeto */
-      max-width: 1200px; /* Limita a largura da grid de projetos */
-      margin: 0 auto; /* Centraliza a grid */
-    }
-    .project-card {
-      background-color: #1a1a1a; /* Fundo ligeiramente mais claro que o body para destaque */
-      border-radius: 10px;
-      overflow: hidden; /* Garante que a imagem não saia dos cantos arredondados */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      width: 350px; /* Largura fixa para cada card */
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: translateY(-8px); /* Efeito "flutuar" no hover */
-      box-shadow: 0 8px 25px rgba(244, 91, 105, 0.6); /* Brilho vermelho no hover */
-    }
-    .project-card img {
-      width: 100%;
-      height: 200px; /* Altura fixa para as imagens */
-      object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
-      display: block;
-      border-bottom: 1px solid #333; /* Linha divisória entre imagem e texto */
-    }
-    .project-info {
-      padding: 20px;
-    }
-    .project-info h3 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-    .project-info p {
-      font-size: 0.95rem;
-      color: #bbb;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
-    .project-link {
-      display: inline-block;
-      color: #f45b69; /* Cor vermelha para o link */
-      text-decoration: none;
-      font-weight: bold;
-      border: 2px solid #f45b69;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .project-link:hover {
-      background-color: #f45b69;
-      color: #fff;
-    }
-    /* --- FIM DA NOVA SEÇÃO DE PROJETOS --- */
+    /* Seção Projetos */
+    #projects { max-width: none; padding: 80px 20px; }
+    .projects-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; }
+    .project-card { background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); width: 350px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(244, 91, 105, 0.6); }
+    .project-card img { width: 100%; height: 200px; object-fit: cover; display: block; border-bottom: 1px solid #333; }
+    .project-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; }
+    .project-info h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .project-info p { font-size: 0.95rem; color: #bbb; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
+    .project-link { display: inline-block; color: #f45b69; text-decoration: none; font-weight: bold; border: 2px solid #f45b69; padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
+    .project-link:hover { background-color: #f45b69; color: #fff; }
 
-
-    /* Contact */
+    /* Seção Contato e Footer */
     .contact { text-align: center; }
-    .contact a { 
-      color: #f45b69; 
-      text-decoration: none; font-weight: bold; 
+    .contact a { color: #f45b69; text-decoration: none; font-weight: bold; }
+    footer { text-align: center; padding: 20px; background: #000; color: white; margin-top: 40px; border-top: 1px solid #333; }
+    
+    /* --- AJUSTES DE RESOLUÇÃO (DESIGN RESPONSIVO) --- */
+    
+    /* Para telas de tablets e menores (até 960px) */
+    @media (max-width: 960px) {
+        .habilidades-container, .projects-grid {
+            flex-direction: column; /* Empilha os cards */
+            align-items: center; /* Centraliza os cards empilhados */
+        }
+        .habilidade-card, .project-card {
+            width: 90%; /* Aumenta a largura dos cards */
+            max-width: 450px;
+        }
+        .habilidade-card {
+            text-align: center;
+        }
+        .icon-container {
+            margin: 0 auto 20px auto; /* Centraliza o ícone */
+        }
     }
 
-    /* Footer */
-    footer { 
-      text-align: center; padding: 20px; 
-      background: #000; 
-      color: white; margin-top: 40px; 
-      border-top: 1px solid #333; 
+    /* Para telas de celulares (até 768px) */
+    @media (max-width: 768px) {
+        section {
+            padding: 60px 15px; /* Diminui o espaçamento lateral */
+        }
+        .welcome h1 {
+            font-size: 2.2rem; /* Diminui a fonte do título principal */
+        }
+        h2 {
+            font-size: 2rem; /* Diminui a fonte dos títulos de seção */
+        }
+        .about img {
+            width: 180px; /* Diminui o tamanho da sua foto */
+            height: 180px;
+        }
     }
-
-    /* Responsivo */
-    @media(max-width: 960px){
-        .habilidades-container { flex-direction: column; align-items: center; }
-        .habilidade-card { width: 90%; max-width: 400px; text-align: center; }
-        .icon-container { margin: 0 auto 20px auto; }
-        .projects-grid { flex-direction: column; align-items: center; }
-        .project-card { width: 90%; max-width: 400px; }
-    }
-    @media(max-width:600px){
-      nav { flex-direction: column; gap: 10px; }
-      .welcome h1 { font-size: 2rem; }
+    
+    /* Para telas de celulares bem pequenas (até 480px) */
+    @media (max-width: 480px) {
+        .welcome h1 {
+            font-size: 1.8rem;
+        }
+        .welcome p {
+            font-size: 1.1rem;
+        }
+        .project-card, .habilidade-card {
+            width: 100%; /* Faz os cards ocuparem toda a largura */
+        }
+        .project-info {
+            min-height: auto; /* Remove altura mínima em telas pequenas */
+        }
     }
   </style>
 </head>
@@ -187,7 +135,8 @@
   <nav>
     <a href="#welcome">Início</a>
     <a href="#skills">Habilidades</a>
-    <a href="#projects">Projetos</a> <a href="#about">Sobre</a>
+    <a href="#projects">Projetos</a>
+    <a href="#about">Sobre</a>
     <a href="#contact">Contato</a>
   </nav>
 </header>
@@ -206,8 +155,8 @@
             </div>
             <h3>Hard Skills</h3>
             <p>
-                HTML & CSS<br>
-                TypeScript & PHP<br>
+                HTML & CSS <br>
+                TypeScript (avancado) & PHP <br>
                 Banco de Dados (MySQL)<br>
                 Git & GitHub<br>
                 Noções de Cibersegurança
@@ -242,19 +191,19 @@
   <div class="projects-grid">
     
     <div class="project-card">
-      <img src="C:\Users\Home\Pictures\iamgemapi.jpg" alt="Captura de tela do Projeto api">
+      <img src="C:\Users\Home\Pictures\iamgemapi.jpg" alt="Interface de teste de API">
       <div class="project-info">
-        <h3> Ambiente de Desenvolvimento de API </h3>
-        <p>A interface inclui um sistema de abas, painéis detalhados de requisição/resposta, syntax highlighting para JSON,para simular a análise de performance de rede</p>
+        <h3>Ambiente de Desenvolvimento de API</h3>
+        <p>A interface inclui um sistema de abas, painéis detalhados de requisição/resposta, syntax highlighting para JSON, para simular a análise de performance de rede.</p>
         <a href="#" class="project-link">Ver Projeto</a>
       </div>
     </div>
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/400x200/5a5a5a/ffffff?text=Projeto+Cooking+Under+Pressure" alt="Captura de tela do Projeto api teste ">
+      <img src="imagem/api-testes-placeholder.jpg" alt="API de testes">
       <div class="project-info">
-        <h3>API de testes </h3>
-        <p>para apenas fazer alguns testes basicos</p>
+        <h3>API de testes</h3>
+        <p>para apenas fazer alguns testes basicos.</p>
         <a href="#" class="project-link">Ver Projeto</a>
       </div>
     </div>
@@ -263,17 +212,17 @@
       <img src="C:\Users\Home\Pictures\imagemprojeto.jpg" alt="Captura de tela do projurney">
       <div class="project-info">
         <h3>projurney</h3>
-        <p>Um projeto para quem deseja ingressar na área de TI, organizado em trilhas de aprendizado, mostrando o caminho completo de estudo e prática de acordo com a área que você quer seguir</p>
+        <p>Um projeto para quem deseja ingressar na área de TI, organizado em trilhas de aprendizado, mostrando o caminho completo de estudo e prática de acordo com a área que você quer seguir.</p>
         <a href="#" class="project-link">Ver Projeto</a>
       </div>
     </div>
 
-    </div>
+  </div>
 </section>
 
 <section id="about" class="about">
   <h2>Sobre Mim</h2>
-  <p>Tenho grande interesse por tecnologia e adoro aprender programação, explorando novas ferramentas e conceitos. Estou no início da minha carreira, criando projetos para despertar minha curiosidade e aprofundar meu conhecimento em linguagens e estruturas de desenvolvimento. Meu nome é Gabriel Saruba, tenho 19 anos, moro em Paulista, Pernambuco, e estudo Análise e Desenvolvimento de Sistemas desde outubro de 2024, atualmente no 3º período.</p>
+  <p>Tenho grande interesse por tecnologia e adoro aprender programação, explorando novas ferramentas e conceitos. Estou no início da minha carreira, criando projetos para despertar minha curiosidade e aprofundar meu conhecimento em linguagens e estruturas de desenvolvimento. Meu nome é Gabriel Saruba, tenho 19 anos, moro em Paulista, Pernambuco, e estudo Análise e Desenvolvimento de Sistemas desde 26 de setembro de 2024, atualmente no 3º período.</p>
   <img src="C:\Users\Home\Downloads\minhafoto.pnj.jpeg" alt="Foto de Gabriel">
 </section>
 
