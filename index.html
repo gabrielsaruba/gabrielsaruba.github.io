@@ -4,15 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Gabriel Saruba</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <style>
     /* Reset básico */
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Arial', sans-serif; background: #f4f4f9; color: #333; }
+
+    /* --- TEMA ESCURO UNIFICADO (PRETO E VERMELHO) --- */
+    body { 
+      font-family: 'Arial', sans-serif; 
+      background: #000; /* Fundo principal PRETO ABSOLUTO */
+      color: #ccc; 
+    }
 
     /* Header e menu */
     header {
-      position: sticky; top:0; background: #1a1a2e; color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 100;
+      position: sticky; top:0; 
+      background: #000; /* Fundo PRETO ABSOLUTO */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
+      z-index: 100;
+      border-bottom: 1px solid #333; 
     }
     nav {
       display: flex; justify-content: center; gap: 20px; padding: 15px;
@@ -20,55 +32,152 @@
     nav a {
       color: white; text-decoration: none; font-weight: bold; transition: 0.3s;
     }
-    nav a:hover { color: #f45b69; }
+    nav a:hover { 
+      color: #f45b69; 
+    }
 
-    /* Seções */
+    /* Seções Padrão */
     section { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
-    h2 { text-align: center; margin-bottom: 30px; color: #1a1a2e; }
+    h1, h2, h3 { color: #fff; } 
+    h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
+    h2 .highlight { color: #f45b69; } /* Destaque para h2 com a cor vermelha */
+
 
     /* Welcome */
     .welcome { text-align: center; }
-    .welcome h1 { font-size: 3rem; margin-bottom: 20px; color: #1a1a2e; }
-    .welcome p { font-size: 1.3rem; color: #555; }
-
-    /* Skills */
-    .skills ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; list-style: none; }
-    .skills li {
-      background: #fff; padding: 12px 20px; border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-weight: bold;
+    .welcome h1 { font-size: 3rem; margin-bottom: 20px; }
+    .welcome p { font-size: 1.3rem; color: #aaa; }
+    
+    /* Seção de Habilidades */
+    #skills {
+      background-color: #000; 
+      max-width: none;
+      padding: 80px 20px;
     }
+    .habilidades-container {
+      max-width: 1200px; margin: 0 auto; display: flex;
+      justify-content: space-around; flex-wrap: wrap; gap: 30px;
+    }
+    .habilidade-card { width: 300px; padding: 20px; text-align: left; }
+    .icon-container {
+      font-size: 2.5rem; color: #f45b69; 
+      margin-bottom: 20px; border: 2px solid #444; width: 80px;
+      height: 80px; display: flex; justify-content: center;
+      align-items: center; border-radius: 8px; transition: all 0.3s ease;
+    }
+    .habilidade-card:hover .icon-container {
+      border-color: #f45b69; 
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(244, 91, 105, 0.5); 
+    }
+    .habilidade-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+    .habilidade-card p { font-size: 1rem; line-height: 1.6; color: #ccc; }
 
     /* About */
     .about { text-align: center; }
     .about img {
-      width: 150px; height: 150px; border-radius: 50%;
-      margin: 20px 0; object-fit: cover; border: 3px solid #f45b69;
+      width: 250px; height: 250px; border-radius: 50%;
+      margin: 20px 0; object-fit: cover; 
+      border: 3px solid #f45b69; 
     }
     .about p { max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
-    /* Projects */
-    .projects ul {
-      list-style: none; display: flex; flex-direction: column; gap: 10px; align-items: center; padding: 0;
+    /* --- NOVA SEÇÃO DE PROJETOS --- */
+    #projects {
+      background-color: #000; /* Fundo preto padrão */
+      max-width: none; /* Remove limitação para o container interno controlar a largura */
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
-    .projects a {
-      text-decoration: none; color: #1a1a2e; font-weight: bold;
-      padding: 10px 20px; background: #fff; border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s;
+    #projects h2 {
+      margin-bottom: 50px;
     }
-    .projects a:hover { background: #f45b69; color: white; }
+    .projects-grid {
+      display: flex;
+      justify-content: center; /* Centraliza os projetos */
+      flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+      gap: 30px; /* Espaço entre os cards de projeto */
+      max-width: 1200px; /* Limita a largura da grid de projetos */
+      margin: 0 auto; /* Centraliza a grid */
+    }
+    .project-card {
+      background-color: #1a1a1a; /* Fundo ligeiramente mais claro que o body para destaque */
+      border-radius: 10px;
+      overflow: hidden; /* Garante que a imagem não saia dos cantos arredondados */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      width: 350px; /* Largura fixa para cada card */
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-8px); /* Efeito "flutuar" no hover */
+      box-shadow: 0 8px 25px rgba(244, 91, 105, 0.6); /* Brilho vermelho no hover */
+    }
+    .project-card img {
+      width: 100%;
+      height: 200px; /* Altura fixa para as imagens */
+      object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+      display: block;
+      border-bottom: 1px solid #333; /* Linha divisória entre imagem e texto */
+    }
+    .project-info {
+      padding: 20px;
+    }
+    .project-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .project-info p {
+      font-size: 0.95rem;
+      color: #bbb;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+    .project-link {
+      display: inline-block;
+      color: #f45b69; /* Cor vermelha para o link */
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #f45b69;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .project-link:hover {
+      background-color: #f45b69;
+      color: #fff;
+    }
+    /* --- FIM DA NOVA SEÇÃO DE PROJETOS --- */
+
 
     /* Contact */
     .contact { text-align: center; }
-    .contact a { color: #f45b69; text-decoration: none; font-weight: bold; }
+    .contact a { 
+      color: #f45b69; 
+      text-decoration: none; font-weight: bold; 
+    }
 
     /* Footer */
-    footer { text-align: center; padding: 20px; background: #1a1a2e; color: white; margin-top: 40px; }
+    footer { 
+      text-align: center; padding: 20px; 
+      background: #000; 
+      color: white; margin-top: 40px; 
+      border-top: 1px solid #333; 
+    }
 
     /* Responsivo */
+    @media(max-width: 960px){
+        .habilidades-container { flex-direction: column; align-items: center; }
+        .habilidade-card { width: 90%; max-width: 400px; text-align: center; }
+        .icon-container { margin: 0 auto 20px auto; }
+        .projects-grid { flex-direction: column; align-items: center; }
+        .project-card { width: 90%; max-width: 400px; }
+    }
     @media(max-width:600px){
       nav { flex-direction: column; gap: 10px; }
       .welcome h1 { font-size: 2rem; }
-      .skills ul { flex-direction: column; }
     }
   </style>
 </head>
@@ -78,8 +187,7 @@
   <nav>
     <a href="#welcome">Início</a>
     <a href="#skills">Habilidades</a>
-    <a href="#about">Sobre</a>
-    <a href="#projects">Projetos</a>
+    <a href="#projects">Projetos</a> <a href="#about">Sobre</a>
     <a href="#contact">Contato</a>
   </nav>
 </header>
@@ -89,42 +197,84 @@
   <p>Estudante de Análise e Desenvolvimento de Sistemas no IFPE</p>
 </section>
 
-<section id="skills" class="skills">
-  <h2>Minhas Habilidades</h2>
-  <div class="subsection">
-    <h3>Hard Skills</h3>
-    <ul>
-      <li>HTML & CSS</li>
-      <li>TypeScript</li>
-      <li>PHP</li>
-      <li>Banco de Dados (MySQL)</li>
-      <li>Git & GitHub</li>
-      <li>Noções de Cibersegurança</li>
-    </ul>
-  </div>
-  <div class="subsection">
-    <h3>Soft Skills</h3>
-    <ul>
-      <li>Trabalho em equipe</li>
-      <li>Curiosidade</li>
-      <li>Aprendizado rápido</li>
-    </ul>
-  </div>
+<section id="skills">
+    <h2>MINHAS <span class="highlight">HABILIDADES.</span></h2>
+    <div class="habilidades-container">
+        <div class="habilidade-card">
+            <div class="icon-container">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>Hard Skills</h3>
+            <p>
+                HTML & CSS<br>
+                TypeScript & PHP<br>
+                Banco de Dados (MySQL)<br>
+                Git & GitHub<br>
+                Noções de Cibersegurança
+            </p>
+        </div>
+        <div class="habilidade-card">
+            <div class="icon-container">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3>Soft Skills</h3>
+            <p>
+                Trabalho em equipe<br>
+                Curiosidade<br>
+                Aprendizado rápido<br>
+                Comunicação
+            </p>
+        </div>
+        <div class="habilidade-card">
+             <div class="icon-container">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Experiência</h3>
+            <p>
+                Ainda não tenho experiência de mercado, porém, estou focado em aprofundar meus estudos para futuramente começar a trabalhar.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+  <h2>MEUS <span class="highlight">PROJETOS.</span></h2>
+  <div class="projects-grid">
+    
+    <div class="project-card">
+      <img src="C:\Users\Home\Pictures\7ccfe5d8-7d95-4ec7-a675-3bc715cdba0a.jpg" alt="Captura de tela do Projeto api">
+      <div class="project-info">
+        <h3> Ambiente de Desenvolvimento de API </h3>
+        <p>A interface inclui um sistema de abas, painéis detalhados de requisição/resposta, syntax highlighting para JSON,para simular a análise de performance de rede</p>
+        <a href="#" class="project-link">Ver Projeto</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x200/5a5a5a/ffffff?text=Projeto+Cooking+Under+Pressure" alt="Captura de tela do Projeto api teste ">
+      <div class="project-info">
+        <h3>API de testes </h3>
+        <p>para apenas fazer alguns testes basicos</p>
+        <a href="#" class="project-link">Ver Projeto</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="C:\Users\Home\Pictures\45c38ea1-d8fa-4cc0-b93b-489fc5d79a01.jpg" alt="Captura de tela do projurney">
+      <div class="project-info">
+        <h3>projurney</h3>
+        <p>Um projeto para quem deseja ingressar na área de TI, organizado em trilhas de aprendizado, mostrando o caminho completo de estudo e prática de acordo com a área que você quer seguir</p>
+        <a href="#" class="project-link">Ver Projeto</a>
+      </div>
+    </div>
+
+    </div>
 </section>
 
 <section id="about" class="about">
   <h2>Sobre Mim</h2>
   <p>Tenho grande interesse por tecnologia e adoro aprender programação, explorando novas ferramentas e conceitos. Estou no início da minha carreira, criando projetos para despertar minha curiosidade e aprofundar meu conhecimento em linguagens e estruturas de desenvolvimento. Meu nome é Gabriel Saruba, tenho 19 anos, moro em Paulista, Pernambuco, e estudo Análise e Desenvolvimento de Sistemas desde outubro de 2024, atualmente no 3º período.</p>
-  <img src="https://via.placeholder.com/150" alt="Foto de Gabriel">
-</section>
-
-<section id="projects" class="projects">
-  <h2>Meus Projetos</h2>
-  <ul>
-    <li><a href="#">Projeto 1 - Sistema de Login</a></li>
-    <li><a href="#">Projeto 2 - API de Teste</a></li>
-    <li><a href="#">Projeto 3 - ProJourney</a></li>
-  </ul>
+  <img src="C:\Users\Home\Downloads\WhatsApp Image 2025-09-26 at 22.18.17.jpeg" alt="Foto de Gabriel">
 </section>
 
 <section id="contact" class="contact">
@@ -134,7 +284,7 @@
 </section>
 
 <footer>
-  © 2025 Gabriel Saruba - 
+  © 2025 Gabriel Saruba
 </footer>
 
 </body>
