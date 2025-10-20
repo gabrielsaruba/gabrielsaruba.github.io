@@ -1,133 +1,111 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Gabriel Saruba</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio - Gabriel Saruba</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <style>
-    /* Reset e Configurações Globais */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; } /* Rolagem suave ao clicar nos links do menu */
-    body { 
-      font-family: 'Arial', sans-serif; 
-      background: #000;
-      color: #ccc; 
-    }
+<style>
+  /* Reset e Globais */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Arial', sans-serif; background:#000; color:#ccc; }
 
-    /* Header e Menu */
-    header {
-      position: sticky; top:0; 
-      background: #000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
-      z-index: 100;
-      border-bottom: 1px solid #333; 
-    }
-    nav {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 15px;
-    }
-    nav a {
-      color: white; text-decoration: none; font-weight: bold; transition: 0.3s;
-    }
-    nav a:hover { color: #f45b69; }
+  header { position: sticky; top:0; background:#000; box-shadow:0 2px 5px rgba(0,0,0,0.5); z-index:100; border-bottom:1px solid #333; }
+  nav { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; padding:15px; }
+  nav a { color:white; text-decoration:none; font-weight:bold; transition:0.3s; }
+  nav a:hover { color:#f45b69; }
 
-    /* Seções e Títulos Padrão */
-    section { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
-    h1, h2, h3 { color: #fff; } 
-    h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
-    h2 .highlight { color: #f45b69; }
+  h1,h2,h3 { color:#fff; }
+  h2 { text-align:center; margin-bottom:50px; font-size:2.5rem; }
+  h2 .highlight { color:#f45b69; }
 
-    /* Seção Welcome */
-    .welcome { text-align: center; }
-    .welcome h1 { font-size: 3rem; margin-bottom: 20px; }
-    .welcome p { font-size: 1.3rem; color: #aaa; }
-    
-    /* Seção Habilidades */
-    #skills { max-width: none; padding: 80px 20px; }
-    .habilidades-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
-    .habilidade-card { width: 300px; padding: 20px; text-align: left; }
-    .icon-container { font-size: 2.5rem; color: #f45b69; margin-bottom: 20px; border: 2px solid #444; width: 80px; height: 80px; display: flex; justify-content: center; align-items: center; border-radius: 8px; transition: all 0.3s ease; }
-    .habilidade-card:hover .icon-container { border-color: #f45b69; transform: scale(1.05); box-shadow: 0 0 15px rgba(244, 91, 105, 0.5); }
-    .habilidade-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-    .habilidade-card p { font-size: 1rem; line-height: 1.6; color: #ccc; }
+  /* --- Welcome Banner --- */
+  #welcome {
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#000;
+    padding:0 20px;
+  }
+  .welcome-container {
+    display:flex;
+    align-items:center;
+    max-width:1200px;
+    width:100%;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .welcome-text {
+    flex:1;
+    max-width:600px;
+    position:relative;
+    z-index:2;
+    margin-right:-150px;
+    background: rgba(0,0,0,0.5);
+    padding:20px;
+    border-radius:15px;
+  }
+  .welcome-text h1 { font-size:3rem; margin-bottom:20px; }
+  .welcome-text .highlight { color:#f45b69; }
+  .welcome-text p { font-size:1.3rem; line-height:1.6; color:#eee; }
+  .welcome-image { flex:1; text-align:right; }
+  .welcome-image img {
+    width:600px; height:600px; object-fit:cover; border-radius:20px;
+    box-shadow:0 0 50px rgba(244,91,105,0.7);
+  }
 
-    
-    .about { text-align: center; }
-    .about img { width: 250px; height: 250px; border-radius: 50%; margin: 20px 0; object-fit: cover; border: 3px solid #f45b69; }
-    .about p { max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  /* --- Habilidades --- */
+  #skills { max-width:none; padding:80px 20px; }
+  .habilidades-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; gap:30px; }
+  .habilidade-card { width:300px; padding:20px; text-align:center; background:#111; border-radius:15px; box-shadow:0 4px 20px rgba(244,91,105,0.4); transition:0.3s; }
+  .habilidade-card:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(244,91,105,0.6); }
+  .icon-container { font-size:2.5rem; color:#f45b69; margin-bottom:20px; border:2px solid #444; width:80px; height:80px; display:flex; justify-content:center; align-items:center; border-radius:8px; margin:auto; }
+  .habilidade-card h3 { font-size:1.5rem; margin-bottom:15px; }
+  .habilidade-card p { font-size:1rem; line-height:1.6; color:#ccc; }
 
-    
-    #projects { max-width: none; padding: 80px 20px; }
-    .projects-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; }
-    .project-card { background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); width: 350px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .project-card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(244, 91, 105, 0.6); }
-    .project-card img { width: 100%; height: 200px; object-fit: cover; display: block; border-bottom: 1px solid #333; }
-    .project-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; }
-    .project-info h3 { font-size: 1.4rem; margin-bottom: 10px; }
-    .project-info p { font-size: 0.95rem; color: #bbb; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
-    .project-link { display: inline-block; color: #f45b69; text-decoration: none; font-weight: bold; border: 2px solid #f45b69; padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
-    .project-link:hover { background-color: #f45b69; color: #fff; }
+  /* --- Projetos --- */
+  #projects { max-width:none; padding:80px 20px; }
+  .projects-grid { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; max-width:1200px; margin:0 auto; }
+  .project-card { background:#111; border-radius:15px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.4); width:350px; text-align:center; transition:0.3s; }
+  .project-card:hover { transform:translateY(-8px); box-shadow:0 8px 25px rgba(244,91,105,0.6); }
+  .project-card img { width:100%; height:200px; object-fit:cover; display:block; border-bottom:1px solid #333; }
+  .project-info { padding:20px; display:flex; flex-direction:column; justify-content:space-between; min-height:200px; }
+  .project-info h3 { font-size:1.4rem; margin-bottom:10px; }
+  .project-info p { font-size:0.95rem; color:#bbb; line-height:1.5; margin-bottom:15px; flex-grow:1; }
+  .project-link { display:inline-block; color:#f45b69; text-decoration:none; font-weight:bold; border:2px solid #f45b69; padding:8px 15px; border-radius:5px; transition:0.3s; }
+  .project-link:hover { background:#f45b69; color:#fff; }
 
-    
-    .contact { text-align: center; }
-    .contact a { color: #f45b69; text-decoration: none; font-weight: bold; }
-    footer { text-align: center; padding: 20px; background: #000; color: white; margin-top: 40px; border-top: 1px solid #333; }
-    
-    /* --- AJUSTES DE RESOLUÇÃO (DESIGN RESPONSIVO) --- */
-    
-    /* Para telas de tablets e menores (até 960px) */
-    @media (max-width: 960px) {
-        .habilidades-container, .projects-grid {
-            flex-direction: column; /* Empilha os cards */
-            align-items: center; /* Centraliza os cards empilhados */
-        }
-        .habilidade-card, .project-card {
-            width: 90%; /* Aumenta a largura dos cards */
-            max-width: 450px;
-        }
-        .habilidade-card {
-            text-align: center;
-        }
-        .icon-container {
-            margin: 0 auto 20px auto; /* Centraliza o ícone */
-        }
-    }
+  /* --- Sobre --- */
+  .about { text-align:center; }
+  .about img { width:300px; height:300px; border-radius:20px; margin:20px 0; object-fit:cover; border:3px solid #f45b69; box-shadow:0 0 30px rgba(244,91,105,0.6); }
+  .about p { max-width:700px; margin:0 auto; line-height:1.6; }
 
-    /* Para telas de celulares (até 768px) */
-    @media (max-width: 768px) {
-        section {
-            padding: 60px 15px; /* Diminui o espaçamento lateral */
-        }
-        .welcome h1 {
-            font-size: 2.2rem; /* Diminui a fonte do título principal */
-        }
-        h2 {
-            font-size: 2rem; /* Diminui a fonte dos títulos de seção */
-        }
-        .about img {
-            width: 180px; /* Diminui o tamanho da sua foto */
-            height: 180px;
-        }
-    }
-    
-    /* Para telas de celulares bem pequenas (até 480px) */
-    @media (max-width: 480px) {
-        .welcome h1 {
-            font-size: 1.8rem;
-        }
-        .welcome p {
-            font-size: 1.1rem;
-        }
-        .project-card, .habilidade-card {
-            width: 100%; /* Faz os cards ocuparem toda a largura */
-        }
-        .project-info {
-            min-height: auto; /* Remove altura mínima em telas pequenas */
-        }
-    }
-  </style>
+  /* --- Contato e Footer --- */
+  .contact { text-align:center; }
+  .contact a { color:#f45b69; text-decoration:none; font-weight:bold; }
+  footer { text-align:center; padding:20px; background:#000; color:white; margin-top:40px; border-top:1px solid #333; }
+
+  /* --- Responsividade --- */
+  @media (max-width:1200px){ .welcome-text{margin-right:-100px;} .welcome-image img{width:500px;height:500px;} }
+  @media (max-width:900px){
+    .welcome-container{flex-direction:column-reverse;text-align:center;}
+    .welcome-text{margin-right:0;background:none;}
+    .welcome-image img{width:300px;height:300px;}
+    .welcome-text h1{font-size:2rem;}
+    .welcome-text p{font-size:1rem;}
+    .habilidade-card, .project-card{width:90%; max-width:450px;}
+    .habilidades-container, .projects-grid{flex-direction:column; align-items:center;}
+  }
+  @media (max-width:480px){
+    .welcome-text h1{font-size:1.8rem;}
+    .welcome-text p{font-size:1.1rem;}
+    .project-card, .habilidade-card{width:100%;}
+    .project-info{min-height:auto;}
+  }
+</style>
 </head>
 <body>
 
@@ -141,100 +119,70 @@
   </nav>
 </header>
 
-<section id="welcome" class="welcome">
-  <h1>Olá, sou Gabriel Saruba</h1>
-  <p>Estudante de Análise e Desenvolvimento de Sistemas no IFPE</p>
-</section>
-
-<section id="skills">
-    <h2>MINHAS <span class="highlight">HABILIDADES.</span></h2>
-    <div class="habilidades-container">
-        <div class="habilidade-card">
-            <div class="icon-container">
-                <i class="fas fa-code"></i>
-            </div>
-            <h3>Hard Skills</h3>
-            <p>
-                HTML & CSS <br>
-                TypeScript (avancado) & PHP <br>
-                Banco de Dados (MySQL)<br>
-                Git & GitHub<br>
-                Noções de Cibersegurança
-            </p>
-        </div>
-        <div class="habilidade-card">
-            <div class="icon-container">
-                <i class="fas fa-users"></i>
-            </div>
-            <h3>Soft Skills</h3>
-            <p>
-                Trabalho em equipe<br>
-                Curiosidade<br>
-                Aprendizado rápido<br>
-                Comunicação
-            </p>
-        </div>
-        <div class="habilidade-card">
-             <div class="icon-container">
-                <i class="fas fa-briefcase"></i>
-            </div>
-            <h3>Experiência</h3>
-            <p>
-                pouca experiência de mercado, porém, estou focado em aprofundar meus estudos para futuramente crescer profissionalmente.
-            </p>
-        </div>
+<!-- Welcome -->
+<section id="welcome">
+  <div class="welcome-container">
+    <div class="welcome-text">
+      <h1>Olá, sou <span class="highlight">Gabriel Saruba</span></h1>
+      <p>Estudante de Análise e Desenvolvimento de Sistemas no IFPE. Apaixonado por tecnologia e sempre aprendendo novas ferramentas e linguagens.</p>
     </div>
-</section>
-
-<section id="projects">
-  <h2>MEUS <span class="highlight">PROJETOS.</span></h2>
-  <div class="projects-grid">
-    
-    <div class="project-card">
-      <img src="https://i.imgur.com/lwbh89O.jpeg" alt="Interface de teste de API">
-      <div class="project-info">
-        <h3>Ambiente de Desenvolvimento de API</h3>
-        <p>A interface inclui um sistema de abas, painéis detalhados de requisição/resposta, syntax highlighting para JSON, para simular a análise de performance de rede.</p>
-        <a href="#" class="project-link">Ver Projeto</a>
-      </div>
+    <div class="welcome-image">
+      <img src="https://i.imgur.com/2FJcvGJ.jpeg" alt="Foto Gabriel">
     </div>
-
-    <div class="project-card">
-      <img src="imagem/api-testes-placeholder.jpg" alt="API de testes">
-      <div class="project-info">
-        <h3>API de testes</h3>
-        <p>para apenas fazer alguns testes basicos.</p>
-        <a href="#" class="project-link">Ver Projeto</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <img src="https://i.imgur.com/X586iuZ.jpeg" alt="Captura de tela do projurney">
-      <div class="project-info">
-        <h3>projurney</h3>
-        <p>Um projeto para quem deseja ingressar na área de TI, organizado em trilhas de aprendizado, mostrando o caminho completo de estudo e prática de acordo com a área que você quer seguir.</p>
-        <a href="#" class="project-link">Ver Projeto</a>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<section id="about" class="about">
-  <h2>Sobre Mim</h2>
-  <p>Tenho grande interesse por tecnologia e adoro aprender programação, explorando novas ferramentas e conceitos. Estou no início da minha carreira, criando projetos para despertar minha curiosidade e aprofundar meu conhecimento em linguagens e estruturas de desenvolvimento. Meu nome é Gabriel Saruba, tenho 19 anos, moro em Paulista, Pernambuco, e estudo Análise e Desenvolvimento de Sistemas desde setembro de 2024, atualmente no 3º período.</p>
-  <img src="https://i.imgur.com/2FJcvGJ.jpeg" alt="Foto de Gabriel">
+<!-- Habilidades -->
+<section id="skills">
+  <h2>MINHAS <span class="highlight">HABILIDADES</span></h2>
+  <div class="habilidades-container">
+    <div class="habilidade-card">
+      <div class="icon-container"><i class="fas fa-code"></i></div>
+      <h3>Hard Skills</h3>
+      <p>HTML & CSS<br>TypeScript & PHP<br>MySQL<br>Git & GitHub<br>Noções de Cibersegurança</p>
+    </div>
+    <div class="habilidade-card">
+      <div class="icon-container"><i class="fas fa-users"></i></div>
+      <h3>Soft Skills</h3>
+      <p>Trabalho em equipe<br>Curiosidade<br>Aprendizado rápido<br>Comunicação</p>
+    </div>
+    <div class="habilidade-card">
+      <div class="icon-container"><i class="fas fa-briefcase"></i></div>
+      <h3>Experiência</h3>
+      <p>Pouca experiência de mercado, mas focado em estudar e crescer profissionalmente.</p>
+    </div>
+  </div>
 </section>
 
-<section id="contact" class="contact">
-  <h2>Contato</h2>
-  <p>Email: <a href="mailto:gabriel.saruba17@gmail.com">gabriel.saruba17@gmail.com</a></p>
-  <p>GitHub: <a href="https://github.com/gabrielsaruba" target="_blank">github.com/gabrielsaruba</a></p>
+<!-- Projetos -->
+<section id="projects">
+  <h2>MEUS <span class="highlight">PROJETOS</span></h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://i.imgur.com/lwbh89O.jpeg" alt="API Interface">
+      <div class="project-info">
+        <h3>Ambiente de Desenvolvimento de API</h3>
+        <p>A interface inclui sistema de abas, painéis de requisição/resposta e syntax highlighting para JSON, simulando análise de performance de rede.</p>
+        <a href="#" class="project-link">Ver Projeto</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://i.imgur.com/X586iuZ.jpeg" alt="Projurney">
+      <div class="project-info">
+        <h3>Projurney</h3>
+        <p>Projeto para quem deseja ingressar na área de TI, organizado em trilhas de aprendizado, mostrando o caminho completo de estudo e prática.</p>
+        <a href="#" class="project-link">Ver Projeto</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://i.imgur.com/placeholder.jpeg" alt="API de Testes">
+      <div class="project-info">
+        <h3>API de Testes</h3>
+        <p>Projeto simples para realizar testes básicos de chamadas de API e aprender sobre requisições HTTP.</p>
+        <a href="#" class="project-link">Ver Projeto</a>
+      </div>
+    </div>
+  </div>
 </section>
-
-<footer>
-  © 2025 Gabriel Saruba
-</footer>
-
-</body>
-</html>
